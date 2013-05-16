@@ -8,7 +8,11 @@
 
 #import "ViewController.h"
 
-@implementation ViewController
+#import "Firebase/Firebase.h"
+
+@implementation ViewController {
+    Firebase *firebase;
+}
 
 - (void)viewDidLoad
 {
@@ -28,6 +32,44 @@
     pos.subtitle = @"World";
     
     [self.mapView addAnnotation:pos];
+    
+    
+    firebase = [[Firebase alloc] initWithUrl:@"https://whereareyou.firebaseio.com/v1/-InAHfjSC2dI8kpYofrD"];
+    
+    [firebase observeEventType:FEventTypeChildAdded withBlock:^(FDataSnapshot *snapshot) {
+        //        NSLog(@"%@ => %@", snapshot.name, snapshot.value);
+        //        NSLog(@"Has children: %s, %d", snapshot.hasChildren ? "true" : "false", [[snapshot.children allObjects] count]);
+        
+        NSDictionary *value = snapshot.value;
+        
+        NSString *guyName = [value objectForKey:@"name"];
+        
+        NSLog(@"New guy %@", guyName);
+        
+        Firebase *positionRef = [[snapshot ref] childByAppendingPath:@"position"];
+        
+        [positionRef observeEventType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
+            NSDictionary *position = snapshot.value;
+            
+            if([position isKindOfClass:[NSNull class]]) {
+                return;
+            }
+            
+            NSLog(@"%@ position: %@", guyName, position);
+            
+            CLLocationCoordinate2D zoomLocation;
+            zoomLocation.latitude = [[position objectForKey:@"lat"] doubleValue];
+            zoomLocation.longitude = [[position objectForKey:@"lon"] doubleValue];
+            
+            MKPointAnnotation *pos = [[MKPointAnnotation alloc] init];
+            pos.coordinate = zoomLocation;
+            pos.title = guyName;
+            pos.subtitle = [position objectForKey:@"datetime"];
+            
+            [self.mapView addAnnotation:pos];
+        }];
+        
+    }];
     
 }
 
