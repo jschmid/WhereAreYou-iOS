@@ -13,7 +13,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
+    self.mapView.delegate = self;
     
 }
 
@@ -29,6 +29,11 @@
     
     [self.mapView addAnnotation:pos];
     
+}
+
+- (void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation {
+    MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(userLocation.coordinate, 800, 800);
+    [self.mapView setRegion:region animated:YES];
 }
 
 @end
