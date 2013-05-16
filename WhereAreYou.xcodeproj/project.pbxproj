@@ -18,6 +18,7 @@
 		DD5E855E1745633300027759 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DD5E855D1745633300027759 /* Default-568h@2x.png */; };
 		DD5E85611745633300027759 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DD5E855F1745633300027759 /* MainStoryboard.storyboard */; };
 		DD5E85641745633400027759 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD5E85631745633400027759 /* ViewController.m */; };
+		DD5E856B1745654F00027759 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD5E856A1745654F00027759 /* MapKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +38,7 @@
 		DD5E85601745633300027759 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
 		DD5E85621745633400027759 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		DD5E85631745633400027759 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		DD5E856A1745654F00027759 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -44,6 +46,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DD5E856B1745654F00027759 /* MapKit.framework in Frameworks */,
 				DD5E85481745633300027759 /* UIKit.framework in Frameworks */,
 				DD5E854A1745633300027759 /* Foundation.framework in Frameworks */,
 				DD5E854C1745633300027759 /* CoreGraphics.framework in Frameworks */,
@@ -56,6 +59,7 @@
 		DD5E853B1745633300027759 = {
 			isa = PBXGroup;
 			children = (
+				DD5E856A1745654F00027759 /* MapKit.framework */,
 				DD5E854D1745633300027759 /* WhereAreYou */,
 				DD5E85461745633300027759 /* Frameworks */,
 				DD5E85451745633300027759 /* Products */,
@@ -263,6 +267,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "WhereAreYou/WhereAreYou-Prefix.pch";
 				INFOPLIST_FILE = "WhereAreYou/WhereAreYou-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -274,6 +279,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "WhereAreYou/WhereAreYou-Prefix.pch";
 				INFOPLIST_FILE = "WhereAreYou/WhereAreYou-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -298,6 +304,7 @@
 				DD5E85691745633400027759 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -1,26 +1,60 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2519" systemVersion="12A206j" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="2">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="11G63b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="2">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1856"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="2083"/>
     </dependencies>
     <scenes>
-        <!--class Prefix:identifier View Controller-->
+        <!--View Controller-->
         <scene sceneID="5">
             <objects>
                 <viewController id="2" customClass="ViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="3">
                         <rect key="frame" x="0.0" y="20" width="320" height="460"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FVt-dr-odZ">
+                                <items>
+                                    <navigationItem title="WhereAreYou" id="xOW-5G-jLR">
+                                        <barButtonItem key="leftBarButtonItem" title="Settings" id="udH-QW-JRK"/>
+                                        <barButtonItem key="rightBarButtonItem" systemItem="action" id="UTo-3p-Yeu"/>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="H6J-kM-jVX"/>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="H6J-kM-jVX" firstAttribute="bottom" secondItem="3" secondAttribute="bottom" type="default" id="0bn-VH-aXg"/>
+                            <constraint firstItem="H6J-kM-jVX" firstAttribute="top" secondItem="FVt-dr-odZ" secondAttribute="bottom" type="default" id="868-w5-XoU"/>
+                            <constraint firstItem="H6J-kM-jVX" firstAttribute="trailing" secondItem="3" secondAttribute="trailing" type="default" id="Cc6-Mv-ctz"/>
+                            <constraint firstItem="FVt-dr-odZ" firstAttribute="leading" secondItem="3" secondAttribute="leading" type="default" id="GzW-j3-9O0"/>
+                            <constraint firstItem="H6J-kM-jVX" firstAttribute="leading" secondItem="3" secondAttribute="leading" type="default" id="L1l-HV-7vk"/>
+                            <constraint firstItem="FVt-dr-odZ" firstAttribute="trailing" secondItem="3" secondAttribute="trailing" type="default" id="TgB-xy-4lt"/>
+                            <constraint firstItem="FVt-dr-odZ" firstAttribute="top" secondItem="3" secondAttribute="top" type="default" id="lSv-gE-jM1"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="mapView" destination="H6J-kM-jVX" id="HJb-tY-C7U"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4" sceneMemberID="firstResponder"/>
             </objects>
         </scene>
     </scenes>
+    <classes>
+        <class className="NSLayoutConstraint" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
+        </class>
+        <class className="ViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="mapView" candidateClass="MKMapView"/>
+            </relationships>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
-        <simulatedScreenMetrics key="destination" type="retina4"/>
+        <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
 </document>

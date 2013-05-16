@@ -8,22 +8,27 @@
 
 #import "ViewController.h"
 
-@interface ViewController ()
-
-@end
-
 @implementation ViewController
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
+    
+    
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void)viewWillAppear:(BOOL)animated {
+    CLLocationCoordinate2D zoomLocation;
+    zoomLocation.latitude = 39.28;
+    zoomLocation.longitude = -76.5;
+    
+    MKPointAnnotation *pos = [[MKPointAnnotation alloc] init];
+    pos.coordinate = zoomLocation;
+    pos.title = @"Hello";
+    pos.subtitle = @"World";
+    
+    [self.mapView addAnnotation:pos];
+    
 }
 
 @end
