@@ -9,6 +9,7 @@
 #import "ViewController.h"
 
 #import "Firebase/Firebase.h"
+#import "SHK.h"
 
 #import "Constants.h"
 
@@ -138,6 +139,18 @@
     [newPos setValue:date forKey:FB_DATETIME];
     
     [myPosition setValue:newPos];
+}
+
+- (IBAction)shareButton:(id)sender {
+    // Create the item to share (in this example, a url)
+	NSURL *url = [NSURL URLWithString:@"http://getsharekit.com"];
+	SHKItem *item = [SHKItem URL:url title:@"ShareKit is Awesome!"];
+    
+	// Get the ShareKit action sheet
+	SHKActionSheet *actionSheet = [SHKActionSheet actionSheetForItem:item];
+    
+	// Display the action sheet
+	[actionSheet showFromBarButtonItem:self.shareButton animated:YES];
 }
 
 @end

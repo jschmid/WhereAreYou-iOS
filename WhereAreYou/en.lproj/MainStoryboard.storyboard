@@ -16,7 +16,11 @@
                                 <items>
                                     <navigationItem title="WhereAreYou" id="xOW-5G-jLR">
                                         <barButtonItem key="leftBarButtonItem" title="Settings" id="udH-QW-JRK"/>
-                                        <barButtonItem key="rightBarButtonItem" systemItem="action" id="UTo-3p-Yeu"/>
+                                        <barButtonItem key="rightBarButtonItem" systemItem="action" id="UTo-3p-Yeu">
+                                            <connections>
+                                                <action selector="shareButton:" destination="2" id="bCm-tv-b3g"/>
+                                            </connections>
+                                        </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
@@ -35,23 +39,13 @@
                     </view>
                     <connections>
                         <outlet property="mapView" destination="H6J-kM-jVX" id="HJb-tY-C7U"/>
+                        <outlet property="shareButton" destination="UTo-3p-Yeu" id="psg-D7-r7M"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4" sceneMemberID="firstResponder"/>
             </objects>
         </scene>
     </scenes>
-    <classes>
-        <class className="NSLayoutConstraint" superclassName="NSObject">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
-        </class>
-        <class className="ViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="mapView" candidateClass="MKMapView"/>
-            </relationships>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

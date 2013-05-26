@@ -12,5 +12,8 @@
 @interface ViewController : UIViewController <MKMapViewDelegate>
 
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *shareButton;
+
+- (IBAction)shareButton:(id)sender;
 
 @end
