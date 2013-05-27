@@ -13,4 +13,6 @@
 
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
 
+- (IBAction)shareButton:(id)sender;
+
 @end

@@ -140,4 +140,21 @@
     [myPosition setValue:newPos];
 }
 
+- (IBAction)shareButton:(id)sender {
+    NSString *shareText = NSLocalizedString(@"SHARE_TEXT", @"Text used when sharing the WAY url");
+    NSString *shareUrl = [BASE_URL stringByAppendingString:firebase.name];
+    NSString *shareComplete = [NSString stringWithFormat:shareText, shareUrl];
+    
+    UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
+    [pasteboard setString:shareComplete];
+    
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"SHARE_ALERT_TITLE", @"Title of the alert when sharing the WAY url")
+                                                    message:NSLocalizedString(@"SHARE_ALERT_CONTENT", @"Content of the alert when sharing the WAY url")
+                                                   delegate:nil
+                                          cancelButtonTitle:NSLocalizedString(@"SHARE_ALERT_BUTTON", @"OK Button when sharing the WAY url")
+                                          otherButtonTitles:nil];
+    
+    [alert show];
+}
+
 @end

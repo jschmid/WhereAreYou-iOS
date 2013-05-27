@@ -12,3 +12,7 @@
 #define FB_LONG @"long"
 #define FB_ACCURACY @"accuracy"
 #define FB_DATETIME @"datetime"
+
+#define BASE_URL @"http://w.schmid.pro/"
+#define FB_URL @"https://whereareyou.firebaseio.com/"
+#define PROTOCOL_VERSION @"v1"

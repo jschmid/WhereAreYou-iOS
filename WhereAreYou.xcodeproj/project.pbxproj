@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		47A427E31753402900E06687 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 47A427E51753402900E06687 /* Localizable.strings */; };
 		DD5E85481745633300027759 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD5E85471745633300027759 /* UIKit.framework */; };
 		DD5E854A1745633300027759 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD5E85491745633300027759 /* Foundation.framework */; };
 		DD5E854C1745633300027759 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD5E854B1745633300027759 /* CoreGraphics.framework */; };
@@ -26,6 +27,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		47A427E017533E3F00E06687 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
+		47A427E41753402900E06687 /* en */ = {isa = PBXFileReference; lastKnownFileType = file; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		DD5E85441745633300027759 /* WhereAreYou.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WhereAreYou.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD5E85471745633300027759 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		DD5E85491745633300027759 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -39,7 +42,6 @@
 		DD5E85591745633300027759 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		DD5E855B1745633300027759 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		DD5E855D1745633300027759 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
-		DD5E85601745633300027759 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
 		DD5E85621745633400027759 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		DD5E85631745633400027759 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		DD5E856A1745654F00027759 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
@@ -125,6 +127,7 @@
 				DD5E85591745633300027759 /* Default.png */,
 				DD5E855B1745633300027759 /* Default@2x.png */,
 				DD5E855D1745633300027759 /* Default-568h@2x.png */,
+				47A427E51753402900E06687 /* Localizable.strings */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -164,6 +167,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				Base,
 			);
 			mainGroup = DD5E853B1745633300027759;
 			productRefGroup = DD5E85451745633300027759 /* Products */;
@@ -185,6 +189,7 @@
 				DD5E855C1745633300027759 /* Default@2x.png in Resources */,
 				DD5E855E1745633300027759 /* Default-568h@2x.png in Resources */,
 				DD5E85611745633300027759 /* MainStoryboard.storyboard in Resources */,
+				47A427E31753402900E06687 /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -204,6 +209,14 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		47A427E51753402900E06687 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				47A427E41753402900E06687 /* en */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 		DD5E85501745633300027759 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -215,7 +228,7 @@
 		DD5E855F1745633300027759 /* MainStoryboard.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				DD5E85601745633300027759 /* en */,
+				47A427E017533E3F00E06687 /* Base */,
 			);
 			name = MainStoryboard.storyboard;
 			sourceTree = "<group>";
