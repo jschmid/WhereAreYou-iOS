@@ -106,6 +106,10 @@
         [self personAddedWithSnapshot:snapshot];
     }];
     
+    [firebase observeEventType:FEventTypeChildRemoved withBlock:^(FDataSnapshot *snapshot) {
+        [self personRemovedWithSnapshot:snapshot];
+    }];
+    
     // Follow the user (until he moves the map manually)
     [self.mapView setUserTrackingMode:MKUserTrackingModeFollow animated:YES];
 }
@@ -138,6 +142,19 @@
     [positionRef observeEventType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
         [self positionChangedWithName:guyName andSnapshot:snapshot];
     }];
+}
+
+- (void)personRemovedWithSnapshot:(FDataSnapshot *)snapshot {
+    NSString *snapshotName = snapshot.name;
+    
+    MKPointAnnotation *marker = [markers objectForKey:snapshotName];
+    
+    if(marker) {
+        [self.mapView removeAnnotation:marker];
+        [markers removeObjectForKey:snapshotName];
+    }
+    
+    [snapshot.ref removeAllObservers];
 }
 
 - (void) positionChangedWithName:(NSString *)guyName andSnapshot:(FDataSnapshot *)snapshot {
