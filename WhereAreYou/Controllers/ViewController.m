@@ -6,7 +6,6 @@
 //  Copyright (c) 2013 Jonas Schmid. All rights reserved.
 //
 
-#import "AppDelegate.h"
 #import "ViewController.h"
 
 #import "Firebase/Firebase.h"
