@@ -26,21 +26,27 @@
     NSUserDefaults *prefs;
 }
 
-- (void)viewDidLoad
-{
-    
+- (void)awakeFromNib {
     markers = [NSMutableDictionary dictionary];
-    
-    myUserName = [[UIDevice currentDevice] name];
-    
+        
     formatter=[[NSDateFormatter alloc] init];
     [formatter setDateFormat:@"dd/MM/yyyy HH:mm"];
     
     prefs = [NSUserDefaults standardUserDefaults];
     
+    myUserName = [prefs stringForKey:PREF_NAME];
+    if(!myUserName) {
+        myUserName = [[UIDevice currentDevice] name];
+        [prefs setObject:myUserName forKey:PREF_NAME];
+        [prefs synchronize];
+    }
+}
+
+- (void)viewDidLoad
+{
     [super viewDidLoad];
-    self.mapView.delegate = self;
     
+    self.mapView.delegate = self;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
