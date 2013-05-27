@@ -21,3 +21,6 @@
 #define BASE_URL @"http://w.schmid.pro/"
 #define FB_URL @"https://whereareyou.firebaseio.com/"
 #define PROTOCOL_VERSION @"v1"
+
+// Notifications
+#define OPEN_NOTIFICATION @"pro.schmid.ios.whereareyou.openroom"
