@@ -13,6 +13,9 @@
 
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
 
+- (IBAction)cancel:(UIStoryboardSegue *)segue;
+- (IBAction)done:(UIStoryboardSegue *)segue;
+
 - (IBAction)shareButton:(id)sender;
 
 @end

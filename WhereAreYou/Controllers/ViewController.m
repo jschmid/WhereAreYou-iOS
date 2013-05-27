@@ -47,9 +47,7 @@
     [super viewDidLoad];
     
     self.mapView.delegate = self;
-}
-
-- (void)viewWillAppear:(BOOL)animated {
+    
     
     firebase = [[Firebase alloc] initWithUrl:@"https://whereareyou.firebaseio.com/v1/-InAHfjSC2dI8kpYofrD"];
     
@@ -72,8 +70,8 @@
     [firebase observeEventType:FEventTypeChildAdded withBlock:^(FDataSnapshot *snapshot) {
         [self personAddedWithSnapshot:snapshot];
     }];
-    
 }
+
 
 - (void) personAddedWithSnapshot:(FDataSnapshot *)snapshot {
     NSString *snapshotName = snapshot.name;
@@ -164,6 +162,31 @@
                                           otherButtonTitles:nil];
     
     [alert show];
+}
+
+
+- (IBAction)cancel:(UIStoryboardSegue *)segue {
+
+    if([segue.identifier isEqualToString:@"CancelInput"]) {
+        // We don't do anything if the user cancelled
+        
+        NSLog(@"User dismissed the settings");
+        
+        [self dismissViewControllerAnimated:YES completion:NULL];
+    }
+}
+
+- (IBAction)done:(UIStoryboardSegue *)segue {
+    
+    if([segue.identifier isEqualToString:@"DoneInput"]) {
+    
+        NSLog(@"User submitted the settings");
+        
+        myUserName = [prefs stringForKey:PREF_NAME];
+        [[myself childByAppendingPath:FB_NAME] setValue:myUserName];
+        
+        [self dismissViewControllerAnimated:YES completion:NULL];
+    }
 }
 
 @end
