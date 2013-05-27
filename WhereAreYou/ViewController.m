@@ -19,7 +19,8 @@
     
     NSMutableDictionary *markers;
     
-    NSString *myName;
+    NSString *myRoomId;
+    NSString *myUserName;
     
     NSDateFormatter *formatter;
     NSUserDefaults *prefs;
@@ -29,6 +30,8 @@
 {
     
     markers = [NSMutableDictionary dictionary];
+    
+    myUserName = [[UIDevice currentDevice] name];
     
     formatter=[[NSDateFormatter alloc] init];
     [formatter setDateFormat:@"dd/MM/yyyy HH:mm"];
@@ -46,18 +49,18 @@
     
     NSString *roomName = [firebase name];
     
-    myName = [prefs stringForKey:roomName];
+    myRoomId = [prefs stringForKey:roomName];
     
-    if(myName) {
-        myself = [firebase childByAppendingPath:myName];
+    if(myRoomId) {
+        myself = [firebase childByAppendingPath:myRoomId];
     } else {
         myself = [firebase childByAutoId];
-        myName = [myself name];
-        [prefs setObject:myName forKey:roomName];
+        myRoomId = [myself name];
+        [prefs setObject:myRoomId forKey:roomName];
         [prefs synchronize];
     }
     
-    [[myself childByAppendingPath:FB_NAME] setValue:@"iOS l0l"];
+    [[myself childByAppendingPath:FB_NAME] setValue:myUserName];
     myPosition = [myself childByAppendingPath:FB_POSITION];
     
     [firebase observeEventType:FEventTypeChildAdded withBlock:^(FDataSnapshot *snapshot) {
@@ -70,7 +73,7 @@
     NSString *snapshotName = snapshot.name;
     
     // Do not capture myself
-    if([snapshotName isEqualToString:myName]) {
+    if([snapshotName isEqualToString:myRoomId]) {
         return;
     }
     
