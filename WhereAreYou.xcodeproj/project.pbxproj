@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		47A427E31753402900E06687 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 47A427E51753402900E06687 /* Localizable.strings */; };
+		47A4281B1753566000E06687 /* SettingsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 47A4281A1753566000E06687 /* SettingsController.m */; };
+		47A4281E1753573600E06687 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 47A4281D1753573600E06687 /* ViewController.m */; };
 		DD5E85481745633300027759 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD5E85471745633300027759 /* UIKit.framework */; };
 		DD5E854A1745633300027759 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD5E85491745633300027759 /* Foundation.framework */; };
 		DD5E854C1745633300027759 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD5E854B1745633300027759 /* CoreGraphics.framework */; };
@@ -18,7 +20,6 @@
 		DD5E855C1745633300027759 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DD5E855B1745633300027759 /* Default@2x.png */; };
 		DD5E855E1745633300027759 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DD5E855D1745633300027759 /* Default-568h@2x.png */; };
 		DD5E85611745633300027759 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DD5E855F1745633300027759 /* MainStoryboard.storyboard */; };
-		DD5E85641745633400027759 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD5E85631745633400027759 /* ViewController.m */; };
 		DD5E856B1745654F00027759 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD5E856A1745654F00027759 /* MapKit.framework */; };
 		DDB93F8E174570930048F195 /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = DDB93F8D174570930048F195 /* libicucore.dylib */; };
 		DDB93F901745709A0048F195 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DDB93F8F1745709A0048F195 /* CFNetwork.framework */; };
@@ -28,7 +29,11 @@
 
 /* Begin PBXFileReference section */
 		47A427E017533E3F00E06687 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
-		47A427E41753402900E06687 /* en */ = {isa = PBXFileReference; lastKnownFileType = file; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		47A427E41753402900E06687 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		47A428191753566000E06687 /* SettingsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SettingsController.h; path = Controllers/SettingsController.h; sourceTree = "<group>"; };
+		47A4281A1753566000E06687 /* SettingsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SettingsController.m; path = Controllers/SettingsController.m; sourceTree = "<group>"; };
+		47A4281C1753573600E06687 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ViewController.h; path = Controllers/ViewController.h; sourceTree = "<group>"; };
+		47A4281D1753573600E06687 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ViewController.m; path = Controllers/ViewController.m; sourceTree = "<group>"; };
 		DD5E85441745633300027759 /* WhereAreYou.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WhereAreYou.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD5E85471745633300027759 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		DD5E85491745633300027759 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -42,8 +47,6 @@
 		DD5E85591745633300027759 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		DD5E855B1745633300027759 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		DD5E855D1745633300027759 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
-		DD5E85621745633400027759 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		DD5E85631745633400027759 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		DD5E856A1745654F00027759 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		DD76530217523AFB001A0A89 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		DDB93F8D174570930048F195 /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = usr/lib/libicucore.dylib; sourceTree = SDKROOT; };
@@ -71,6 +74,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		47A428181753563300E06687 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				47A4281C1753573600E06687 /* ViewController.h */,
+				47A4281D1753573600E06687 /* ViewController.m */,
+				47A428191753566000E06687 /* SettingsController.h */,
+				47A4281A1753566000E06687 /* SettingsController.m */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
 		DD5E853B1745633300027759 = {
 			isa = PBXGroup;
 			children = (
@@ -109,8 +123,7 @@
 				DD5E85561745633300027759 /* AppDelegate.h */,
 				DD5E85571745633300027759 /* AppDelegate.m */,
 				DD5E855F1745633300027759 /* MainStoryboard.storyboard */,
-				DD5E85621745633400027759 /* ViewController.h */,
-				DD5E85631745633400027759 /* ViewController.m */,
+				47A428181753563300E06687 /* Controllers */,
 				DD5E854E1745633300027759 /* Supporting Files */,
 				DD76530217523AFB001A0A89 /* Constants.h */,
 			);
@@ -202,7 +215,8 @@
 			files = (
 				DD5E85541745633300027759 /* main.m in Sources */,
 				DD5E85581745633300027759 /* AppDelegate.m in Sources */,
-				DD5E85641745633400027759 /* ViewController.m in Sources */,
+				47A4281B1753566000E06687 /* SettingsController.m in Sources */,
+				47A4281E1753573600E06687 /* ViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
