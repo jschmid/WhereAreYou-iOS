@@ -106,6 +106,9 @@
     [firebase observeEventType:FEventTypeChildAdded withBlock:^(FDataSnapshot *snapshot) {
         [self personAddedWithSnapshot:snapshot];
     }];
+    
+    // Follow the user (until he moves the map manually)
+    [self.mapView setUserTrackingMode:MKUserTrackingModeFollow animated:YES];
 }
 
 - (void)cleanMapIfNeeded {
