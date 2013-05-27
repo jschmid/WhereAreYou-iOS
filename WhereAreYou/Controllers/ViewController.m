@@ -214,6 +214,10 @@
     [alert show];
 }
 
+- (IBAction)gpsButton:(id)sender {
+    [self.mapView setUserTrackingMode:MKUserTrackingModeFollow animated:YES];
+}
+
 
 - (IBAction)cancel:(UIStoryboardSegue *)segue {
 

@@ -10,6 +10,8 @@
 		47A427E31753402900E06687 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 47A427E51753402900E06687 /* Localizable.strings */; };
 		47A4281B1753566000E06687 /* SettingsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 47A4281A1753566000E06687 /* SettingsController.m */; };
 		47A4281E1753573600E06687 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 47A4281D1753573600E06687 /* ViewController.m */; };
+		47A4282217538B1D00E06687 /* gps.png in Resources */ = {isa = PBXBuildFile; fileRef = 47A4282017538B1D00E06687 /* gps.png */; };
+		47A4282317538B1D00E06687 /* gps@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 47A4282117538B1D00E06687 /* gps@2x.png */; };
 		DD5E85481745633300027759 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD5E85471745633300027759 /* UIKit.framework */; };
 		DD5E854A1745633300027759 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD5E85491745633300027759 /* Foundation.framework */; };
 		DD5E854C1745633300027759 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD5E854B1745633300027759 /* CoreGraphics.framework */; };
@@ -34,6 +36,8 @@
 		47A4281A1753566000E06687 /* SettingsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SettingsController.m; path = Controllers/SettingsController.m; sourceTree = "<group>"; };
 		47A4281C1753573600E06687 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ViewController.h; path = Controllers/ViewController.h; sourceTree = "<group>"; };
 		47A4281D1753573600E06687 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ViewController.m; path = Controllers/ViewController.m; sourceTree = "<group>"; };
+		47A4282017538B1D00E06687 /* gps.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gps.png; sourceTree = "<group>"; };
+		47A4282117538B1D00E06687 /* gps@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gps@2x.png"; sourceTree = "<group>"; };
 		DD5E85441745633300027759 /* WhereAreYou.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WhereAreYou.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD5E85471745633300027759 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		DD5E85491745633300027759 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -85,9 +89,19 @@
 			name = Controllers;
 			sourceTree = "<group>";
 		};
+		47A4281F17538B1D00E06687 /* Graphics */ = {
+			isa = PBXGroup;
+			children = (
+				47A4282017538B1D00E06687 /* gps.png */,
+				47A4282117538B1D00E06687 /* gps@2x.png */,
+			);
+			path = Graphics;
+			sourceTree = "<group>";
+		};
 		DD5E853B1745633300027759 = {
 			isa = PBXGroup;
 			children = (
+				47A4281F17538B1D00E06687 /* Graphics */,
 				DD5E854D1745633300027759 /* WhereAreYou */,
 				DD5E85461745633300027759 /* Frameworks */,
 				DD5E85451745633300027759 /* Products */,
@@ -203,6 +217,8 @@
 				DD5E855E1745633300027759 /* Default-568h@2x.png in Resources */,
 				DD5E85611745633300027759 /* MainStoryboard.storyboard in Resources */,
 				47A427E31753402900E06687 /* Localizable.strings in Resources */,
+				47A4282217538B1D00E06687 /* gps.png in Resources */,
+				47A4282317538B1D00E06687 /* gps@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

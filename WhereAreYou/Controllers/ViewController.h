@@ -17,5 +17,6 @@
 - (IBAction)done:(UIStoryboardSegue *)segue;
 
 - (IBAction)shareButton:(id)sender;
+- (IBAction)gpsButton:(id)sender;
 
 @end
