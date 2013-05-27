@@ -27,7 +27,6 @@
 }
 
 - (void)awakeFromNib {
-    markers = [NSMutableDictionary dictionary];
         
     formatter=[[NSDateFormatter alloc] init];
     [formatter setDateFormat:@"dd/MM/yyyy HH:mm"];
@@ -44,14 +43,50 @@
 
 - (void)viewDidLoad
 {
+    NSLog(@"View did load");
+    
     [super viewDidLoad];
     
+    // Delegate for the map events
     self.mapView.delegate = self;
     
+    // Register to get claled when the user clicks a link
+    NSNotificationCenter *nsCenter = [NSNotificationCenter defaultCenter];
+    [nsCenter addObserver:self selector:@selector(openNewRoom:) name:OPEN_NOTIFICATION object:nil];
     
-    firebase = [[Firebase alloc] initWithUrl:@"https://whereareyou.firebaseio.com/v1/-InAHfjSC2dI8kpYofrD"];
+    [self prepareMap];
+}
+
+- (void)openNewRoom:(NSNotification *)notification {
     
-    NSString *roomName = [firebase name];
+    NSLog(@"Got notification: %@", notification);
+    
+    NSString *roomName = [notification.userInfo objectForKey:OPEN_NOTIFICATION];
+    
+    [self prepareMapWithRoomName:roomName];
+}
+
+- (void)prepareMap {
+    [self prepareMapWithRoomName:nil];
+}
+
+- (void)prepareMapWithRoomName:(NSString *)roomName {
+    
+    NSLog(@"Preparing map with: >%@<", roomName);
+    
+    [self cleanMapIfNeeded];
+    
+    markers = [NSMutableDictionary dictionary];
+    
+    NSString *firebaseBaseUrl = [FB_URL stringByAppendingString:PROTOCOL_VERSION];
+    Firebase *roomsFirebase = [[Firebase alloc] initWithUrl:firebaseBaseUrl];
+    
+    if(roomName.length > 0) {
+        firebase = [roomsFirebase childByAppendingPath:roomName];
+    } else {
+        firebase = [roomsFirebase childByAutoId];
+        roomName = firebase.name;
+    }
     
     myRoomId = [prefs stringForKey:roomName];
     
@@ -70,10 +105,21 @@
     [firebase observeEventType:FEventTypeChildAdded withBlock:^(FDataSnapshot *snapshot) {
         [self personAddedWithSnapshot:snapshot];
     }];
+    
+    // Follow the user (until he moves the map manually)
+    [self.mapView setUserTrackingMode:MKUserTrackingModeFollow animated:YES];
 }
 
+- (void)cleanMapIfNeeded {
+    if(firebase) {
+        NSLog(@"Cleaning map");
+        
+        [firebase removeAllObservers];
+        [self.mapView removeAnnotations:[markers allValues]];
+    }
+}
 
-- (void) personAddedWithSnapshot:(FDataSnapshot *)snapshot {
+- (void)personAddedWithSnapshot:(FDataSnapshot *)snapshot {
     NSString *snapshotName = snapshot.name;
     
     // Do not capture myself
@@ -96,6 +142,8 @@
 
 - (void) positionChangedWithName:(NSString *)guyName andSnapshot:(FDataSnapshot *)snapshot {
     NSDictionary *position = snapshot.value;
+    
+    NSLog(@"Position changed: %@", position);
     
     if([position isKindOfClass:[NSNull class]]) {
         return;
@@ -135,6 +183,8 @@
 - (void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation {
 //    MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(userLocation.coordinate, 800, 800);
 //    [self.mapView setRegion:region animated:YES];
+    
+    NSLog(@"User updated his position: %@", userLocation);
     
     NSMutableDictionary *newPos = [NSMutableDictionary dictionary];
     [newPos setValue:[NSNumber numberWithDouble:userLocation.coordinate.latitude] forKey:FB_LAT];
