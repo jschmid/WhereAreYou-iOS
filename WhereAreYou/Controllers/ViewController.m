@@ -27,6 +27,8 @@
 }
 
 - (void)awakeFromNib {
+    
+    NSLog(@"Awake from nib");
         
     formatter=[[NSDateFormatter alloc] init];
     [formatter setDateFormat:@"dd/MM/yyyy HH:mm"];
@@ -135,7 +137,7 @@
     
     NSString *guyName = [value objectForKey:FB_NAME];
     
-    NSLog(@"New guy %@", guyName);
+    NSLog(@"New user %@", guyName);
     
     Firebase *positionRef = [[snapshot ref] childByAppendingPath:FB_POSITION];
     
@@ -146,6 +148,8 @@
 
 - (void)personRemovedWithSnapshot:(FDataSnapshot *)snapshot {
     NSString *snapshotName = snapshot.name;
+    
+    NSLog(@"User removed %@", snapshotName);
     
     MKPointAnnotation *marker = [markers objectForKey:snapshotName];
     
@@ -160,8 +164,6 @@
 - (void) positionChangedWithName:(NSString *)guyName andSnapshot:(FDataSnapshot *)snapshot {
     NSDictionary *position = snapshot.value;
     
-    NSLog(@"Position changed: %@", position);
-    
     if([position isKindOfClass:[NSNull class]]) {
         return;
     }
@@ -169,6 +171,8 @@
     Firebase *ref = [snapshot ref];
     Firebase *parent = [ref parent];
     NSString *parentName = [parent name];
+    
+    NSLog(@"Position changed for %@: %@", parentName, position);
     
     CLLocationCoordinate2D zoomLocation;
     zoomLocation.latitude = [[position objectForKey:FB_LAT] doubleValue];
@@ -229,6 +233,8 @@
                                           otherButtonTitles:nil];
     
     [alert show];
+    
+    NSLog(@"Sharing URL: %@", shareComplete);
 }
 
 - (IBAction)gpsButton:(id)sender {

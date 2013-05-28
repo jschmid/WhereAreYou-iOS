@@ -24,6 +24,8 @@
     
     NSString *myUserName = [prefs stringForKey:PREF_NAME];
     self.userNameTextField.text = myUserName;
+    
+    NSLog(@"Loading prefs");
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
