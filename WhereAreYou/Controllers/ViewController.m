@@ -18,6 +18,7 @@
     Firebase *myPosition;
     
     NSMutableDictionary *markers;
+    NSMutableDictionary *radices;
     
     NSString *myRoomId;
     NSString *myUserName;
@@ -79,6 +80,7 @@
     [self cleanMapIfNeeded];
     
     markers = [NSMutableDictionary dictionary];
+    radices = [NSMutableDictionary dictionary];
     
     NSString *firebaseBaseUrl = [FB_URL stringByAppendingString:PROTOCOL_VERSION];
     Firebase *roomsFirebase = [[Firebase alloc] initWithUrl:firebaseBaseUrl];
@@ -152,10 +154,15 @@
     NSLog(@"User removed %@", snapshotName);
     
     MKPointAnnotation *marker = [markers objectForKey:snapshotName];
-    
     if(marker) {
         [self.mapView removeAnnotation:marker];
         [markers removeObjectForKey:snapshotName];
+    }
+    
+    MKCircle *radix = [radices objectForKey:snapshotName];
+    if(radix) {
+        [self.mapView removeOverlay:radix];
+        [radices removeObjectForKey:snapshotName];
     }
     
     [snapshot.ref removeAllObservers];
@@ -178,13 +185,17 @@
     zoomLocation.latitude = [[position objectForKey:FB_LAT] doubleValue];
     zoomLocation.longitude = [[position objectForKey:FB_LONG] doubleValue];
     
+    double accuracy = [[position objectForKey:FB_ACCURACY] doubleValue];
+    if(accuracy > MAX_ACCURACY) {
+        accuracy = MAX_ACCURACY;
+    }
+    
     NSNumber *dateTimestamp = [position objectForKey:FB_DATETIME];
     NSTimeInterval interval = [dateTimestamp doubleValue] / 1000.0;
     NSDate *date = [NSDate dateWithTimeIntervalSince1970:interval];
     NSString *dateString = [formatter stringFromDate:date];
     
     MKPointAnnotation *marker = [markers objectForKey:parentName];
-    
     if(marker) {
         marker.coordinate = zoomLocation;
         marker.subtitle = dateString;
@@ -199,12 +210,31 @@
         
         [markers setValue:marker forKey:parentName];
     }
+    
+    
+    MKCircle *radix = [radices objectForKey:parentName];
+    if(radix) {
+        [self.mapView removeOverlay:radix];
+    }
+    
+    // We cannot move an overlay, so we remove it if needed then re-add it
+    MKCircle *circle = [MKCircle circleWithCenterCoordinate:zoomLocation radius:accuracy];
+    [self.mapView addOverlay:circle];
+    [radices setValue:circle forKey:parentName];
+}
+
+// Used to show the radius
+- (MKOverlayView *)mapView:(MKMapView *)map viewForOverlay:(id <MKOverlay>)overlay
+{
+    MKCircleView *circleView = [[MKCircleView alloc] initWithOverlay:overlay];
+    circleView.strokeColor = [[UIColor blueColor] colorWithAlphaComponent:0.8];
+    circleView.lineWidth = 2;
+    circleView.fillColor = [[UIColor blueColor] colorWithAlphaComponent:0.3];
+    return circleView;
 }
 
 - (void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation {
-//    MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(userLocation.coordinate, 800, 800);
-//    [self.mapView setRegion:region animated:YES];
-    
+
     NSLog(@"User updated his position: %@", userLocation);
     
     NSMutableDictionary *newPos = [NSMutableDictionary dictionary];

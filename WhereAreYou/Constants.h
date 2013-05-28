@@ -17,6 +17,9 @@
 // Preferences
 #define PREF_NAME @"USERNAME"
 
+// UI
+#define MAX_ACCURACY 500
+
 // URLs
 #define BASE_URL @"http://w.schmid.pro/"
 #define FB_URL @"https://whereareyou.firebaseio.com/"
