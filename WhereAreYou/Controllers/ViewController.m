@@ -212,8 +212,10 @@
     [newPos setValue:[NSNumber numberWithDouble:userLocation.coordinate.longitude] forKey:FB_LONG];
     [newPos setValue:[NSNumber numberWithDouble:userLocation.location.horizontalAccuracy] forKey:FB_ACCURACY];
     
-    NSNumber *date = [NSNumber numberWithDouble:([[NSDate date] timeIntervalSince1970] * 1000.0)];
-    [newPos setValue:date forKey:FB_DATETIME];
+    NSNumber *date = [NSNumber numberWithDouble:([[NSDate date] timeIntervalSince1970] * 1000)];
+    NSString *numStr = [NSString stringWithFormat:@"%llu", [date unsignedLongLongValue]];
+
+    [newPos setValue:numStr forKey:FB_DATETIME];
     
     [myPosition setValue:newPos];
 }
